@@ -16,7 +16,7 @@ use feature 'say';
 my $b_enable_dbug = 0;
 
 # array of shows to query for
-my @s_shows = (
+my @a_shows = (
     #'halo',             # running
     #'star-trek-picard', # running
     #'the-blacklist',    # running
@@ -51,41 +51,41 @@ my @s_shows = (
     # 'the-strain',               # finished
 );
 
-my $i_arr_length = scalar(@s_shows) - 1;
+my $i_arr_length = scalar(@a_shows) - 1;
 
 for ( my $i = 0; $i <= $i_arr_length; $i++ ) {
 
     # create user agent
-    my $user_agent = LWP::UserAgent->new();
+    my $o_user_agent = LWP::UserAgent->new();
 
     # execute api query
-    my $raw = $user_agent->get( "https://catchtheshow.herokuapp.com/api/$s_shows[$i]" )
+    my $o_raw = $o_user_agent->get( "https://catchtheshow.herokuapp.com/api/$a_shows[$i]" )
         or die( 'Get request not successful: ' . $! );
 
-    die Dumper( $raw ) if( $b_enable_dbug == 1 );
+    die Dumper( $o_raw ) if( $b_enable_dbug == 1 );
 
     # decode to json
-    my $json = $raw->decoded_content()
+    my $j_json = $o_raw->decoded_content()
         or die( 'Decoding not successful: ' . $! );
 
-    die Dumper( $json ) if( $b_enable_dbug == 1 );
+    die Dumper( $j_json ) if( $b_enable_dbug == 1 );
 
     # decode json to hash
-    my $hash_pl = decode_json( $json )
+    my $hr_hash_pl = decode_json( $j_json )
         or die( 'Decoding to json not successful: ' . $! );
 
-    die Dumper( $hash_pl ) if( $b_enable_dbug == 1 ); # have a look at the raw hash
+    die Dumper( $hr_hash_pl ) if( $b_enable_dbug == 1 ); # have a look at the raw hash
 
     # fill in variables
-    my $s_name      = $hash_pl->{ 'name'   } // '-';
-    my $s_status    = $hash_pl->{ 'status' } // '-';
-    my $s_ne_name   = $hash_pl->{ 'nextEpisode' }->{ 'name'      } // '-';
-    my $s_countdown = $hash_pl->{ 'nextEpisode' }->{ 'countdown' } // '-';
-    my $i_episode   = $hash_pl->{ 'nextEpisode' }->{ 'episode'   } // '-';
-    my $i_season    = $hash_pl->{ 'nextEpisode' }->{ 'season'    } // '-';
-    my $i_day       = $hash_pl->{ 'nextEpisode' }->{ 'date'      }->{ 'day'   } // '-';
-    my $i_month     = $hash_pl->{ 'nextEpisode' }->{ 'date'      }->{ 'month' } // '-';
-    my $i_year      = $hash_pl->{ 'nextEpisode' }->{ 'date'      }->{ 'year'  } // '-';
+    my $s_name      = $hr_hash_pl->{ 'name'   } // '-';
+    my $s_status    = $hr_hash_pl->{ 'status' } // '-';
+    my $s_ne_name   = $hr_hash_pl->{ 'nextEpisode' }->{ 'name'      } // '-';
+    my $s_countdown = $hr_hash_pl->{ 'nextEpisode' }->{ 'countdown' } // '-';
+    my $i_episode   = $hr_hash_pl->{ 'nextEpisode' }->{ 'episode'   } // '-';
+    my $i_season    = $hr_hash_pl->{ 'nextEpisode' }->{ 'season'    } // '-';
+    my $i_day       = $hr_hash_pl->{ 'nextEpisode' }->{ 'date'      }->{ 'day'   } // '-';
+    my $i_month     = $hr_hash_pl->{ 'nextEpisode' }->{ 'date'      }->{ 'month' } // '-';
+    my $i_year      = $hr_hash_pl->{ 'nextEpisode' }->{ 'date'      }->{ 'year'  } // '-';
 
     my $s_season_episode    = "S: $i_season, E: $i_episode";
     my $s_date_next_episode = "$i_year-$i_month-$i_day";
