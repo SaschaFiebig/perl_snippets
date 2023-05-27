@@ -19,7 +19,8 @@ use feature 'say';
 ## 10 *error handling
 ## 11 *encoding
 ## 12 *functions
-## 13 classes & objects
+## 13 *usefull functions
+## 14 classes & objects
 
 ## 00 package management
 if(0) {
@@ -105,7 +106,7 @@ if(0) {
 }
 
 ## 03 hashes
-if(1) {
+if(0) {
     say( "\n## HASHES ###########################################################" );
     # declare and initialize hashes
     my %h_evil_corporations = (
@@ -270,7 +271,7 @@ if(0) {
 }
 
 ## 06 string operations (slicing, regex, ect...)
-if(0) {
+if(1) {
     say( "\n## STRING OPERATIONS ################################################" );
     # https://www.perltutorial.org/perl-string/
     my $s_string_a = 'Cyberpunk 2077';
@@ -294,7 +295,9 @@ if(0) {
     $s_string_d =~ s/Broccoli/Bacon/;
     say( "Replaced string: " . $s_string_d );
 
-    # regex
+    # regex extracting
+    my ( $s_string_extracted ) = ( $s_string_d =~ /\A(.*?) /);
+    say( 'Extracted String: ' . $s_string_extracted); 
 }
 
 ## 07 math
@@ -367,7 +370,18 @@ if(0) {
 ## 12 functions
 if(0){}
 
-## 13 classes & objects
+## 13 useful functions
+if(1){
+
+    # date time stamp 
+    use POSIX qw(strftime);
+    my $s_time_stamp = strftime("%Y-%m-%d_%H:%M:%S", localtime);
+    say( 'Date-Timestamp: ' . $s_time_stamp );
+
+
+}
+
+## 14 classes & objects
 if(0){
 
     # class files have the '.pm' extension
