@@ -17,29 +17,31 @@ my $b_enable_dbug = 0;
 
 # array of shows to query for
 my @s_shows = (
-    'halo',             # running
-    'star-trek-picard', # running
-    'the-blacklist',    # running
-    'the-rookie',       # running
+    #'halo',             # running
+    #'star-trek-picard', # running
+    #'the-blacklist',    # running
+    #'the-rookie',       # running
 
-    'the-walking-dead',          # returning
-    'archer',                    # returning
+    #'the-walking-dead',          # returning
+    #'archer',                    # returning
     'csi-vegas',                 # returning
-    'foundation',                # returning
-    'loki',                      # returning
-    'rick-and-morty',            # returning
-    'seal-team',                 # returning
-    'the-legend-of-vox-machina', # returning
-    'the-mandalorian',           # returning
-    'south-park',
+    #'foundation',                # returning
+    #'loki',                      # returning
+    #'rick-and-morty',            # returning
+    #'seal-team',                 # returning
+    #'the-legend-of-vox-machina', # returning
+    #'the-mandalorian',           # returning
+    #'south-park',
 
-    'cyberpunk-edgerunners', # tba
-    'obi-wan-kenobi',        # 2022-05-27
-    'willow',                # tba
-    'house-of-the-dragon',   # 2022-08-01
+    #'cyberpunk-edgerunners', # tba
+    # 'obi-wan-kenobi',        # 2022-05-27
+    #'willow',                # tba
+    #'house-of-the-dragon',   # 2022-08-01
 
-    'the-last-of-us',       # broken
-    'westworld', # ?
+    # 'the-last-of-us',       # broken
+    #'westworld', # ?
+
+    #'quantum-leap-2022',
 
     # 'blade-runner-black-lotus', # finished
     # 'clarice',                  # finished

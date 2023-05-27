@@ -63,8 +63,8 @@ if(0) {
     foreach my $copy_value ( @a_single_type_array ){ push @a_array_deep_copy2, $copy_value } # deep copy using loop
 
     # auto generate arrays
-    my @a_auto_number_array = ( 0..100 );
-    my @a_auto_char_array   = ( 'A'..'Z');
+    my @a_auto_number_array = ( 0..100   );
+    my @a_auto_char_array   = ( 'A'..'Z' );
 
     # array operations
     say( 'array length: ' . scalar( @a_auto_char_array ));         # get array length
@@ -85,15 +85,15 @@ if(0) {
 
     # access arrays
     say( 'Access array by index: ' . $a_single_type_array[2] );
-    say( 'Access multilevel array by index: ' . $a_multi_level_array[2][0]);
-    say( 'Access anonymous array by index: ' . @$ar_anon_array[0]);
-    say( 'Access anonymous multilevel array by index: ' . @$ar_anon_array[2]->[1]);
+    say( 'Access multilevel array by index: ' . $a_multi_level_array[2][0] );
+    say( 'Access anonymous array by index: ' . @$ar_anon_array[0] );
+    say( 'Access anonymous multilevel array by index: ' . @$ar_anon_array[2]->[1] );
 
     # iterate trough arrays
-    for my $array_value ( @a_single_type_array ){ say( $array_value ) } # simple iteration trough array
-    foreach my $array_value ( @a_single_type_array ){ say( $array_value ) } # simple iteration trough array
+    for my $array_value ( @a_single_type_array ){ say( $array_value     )} # simple iteration trough array
+    foreach my $array_value ( @a_single_type_array ){ say( $array_value )} # simple iteration trough array
 
-    for(my $i_count = 0; $i_count < scalar( @a_mixed_type_array ); $i_count++ ){ # count trough array
+    for( my $i_count = 0; $i_count < scalar( @a_mixed_type_array ); $i_count++ ){ # count trough array
         say( "$i_count: $a_mixed_type_array[$i_count]" );
     }
 
@@ -221,6 +221,10 @@ if(0) {
     }
 
     say( '' );
+
+    foreach my $s_element (@a_elements){
+        say( "s_element: $s_element");
+    }
 
     my $i_counter_01 = 3;
     while ( $i_counter_01 >= 0 ) {
