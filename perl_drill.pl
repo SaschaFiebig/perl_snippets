@@ -105,7 +105,7 @@ if(0) {
 }
 
 ## 03 hashes
-if(0) {
+if(1) {
     say( "\n## HASHES ###########################################################" );
     # declare and initialize hashes
     my %h_evil_corporations = (
@@ -123,6 +123,15 @@ if(0) {
         'cyberpunk_2077' => { 'media' => 'Game'   , 'genre' => 'Cyberpunk', 'rating' => '4 of 5' },
         'the_matrix'     => { 'media' => 'Movie'  , 'genre' => 'Cyberpunk', 'rating' => '5 of 5' },
     );
+
+    # declare and initialize a hash reference 
+    my $hr_robots = {
+        'Number 5' => 'Short Circuit',
+        'R2-D2'    => 'Star Wars',
+        'Robby'    => 'Forbidden Planet',
+        'WALL-E'   => 'WALL-E',
+        'Bishop'   => 'Aliens',
+    };
 
     # making a hash deep copy
     use Storable qw(dclone);
@@ -152,10 +161,16 @@ if(0) {
     # empty hash content
     %h_deep_copy_to_delete = ();
 
-    # access has values
+    # access hash values
     say( 'Evil Corporations Deep Copy:  ' . $h_deep_copy{ 'terminator' });
     say( 'Evil Corporations:            ' . $h_evil_corporations{ 'terminator' });
     say( 'My Multi Hash Entertainment:  ' . $h_cyberpunk_entertainment{ 'cyberpunk_2077' }{ 'rating' });
+
+    say( '' );
+
+    # access hash reference values 
+    print( "Number 5 franchise: $hr_robots->{'Number 5'}\n" );
+    print( "R2-D2 franchise:    $hr_robots->{'R2-D2'}\n" );
 
     say( '' );
 
@@ -216,6 +231,9 @@ if(0) {
 ## 05 loops
 if(0) {
     say( "\n## LOOPS ############################################################" );
+
+    my @a_elements = ( 1, 4, 3, 2 );
+
     for ( my $i_counter_00 = 0; $i_counter_00 <= 3; $i_counter_00++ ) {
         say( "FOR Loop: $i_counter_00" );
     }
@@ -292,7 +310,7 @@ if(0) {
 }
 
 ## 09 I/O files
-if(1) {
+if(0) {
     say( "\n## I/O FILES ########################################################" );
     if (1) {
         # <   or r  = Read only
