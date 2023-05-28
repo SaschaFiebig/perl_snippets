@@ -447,14 +447,14 @@ if(1){
     #use perl_snippets::perl_drill;
 
     # create objects
-    my $o_harry = new perl_snippets::perl_drill( 'harry', 42, 'Black' );
-    my $o_karen = new perl_snippets::perl_drill( 'karen', 00, 'Blonde'  );
+    my $o_harry = new perl_snippets::perl_drill( 'Harry', 42, 'Black'  );
+    my $o_karen = new perl_snippets::perl_drill( 'Karen', 00, 'Blonde' );
 
     # use object methods
     my $s_harry_name = $o_harry->get_name(); # extract object name parameter
     $o_karen->set_age( 32 );               # set a new age for the 'karen' object
-    say($o_karen->character_overview());
-    say( $o_karen->get_name());
+    say( $o_karen->character_overview() );
+    say( $o_karen->get_name() );
 
 
 }
