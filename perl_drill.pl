@@ -271,7 +271,7 @@ if(0) {
 }
 
 ## 06 string operations (slicing, regex, ect...)
-if(1) {
+if(0) {
     say( "\n## STRING OPERATIONS ################################################" );
     # https://www.perltutorial.org/perl-string/
     my $s_string_a = 'Cyberpunk 2077';
@@ -371,7 +371,7 @@ if(0) {
 if(0){}
 
 ## 13 useful functions
-if(1){
+if(0){
 
     # date time stamp 
     use POSIX qw(strftime);
@@ -382,7 +382,7 @@ if(1){
 }
 
 ## 14 classes & objects
-if(0){
+if(1){
 
     # class files have the '.pm' extension
 
@@ -412,21 +412,31 @@ if(0){
     }
 
     # getter methods
-    get_name{
+    sub get_name{
         my ( $self ) = @_;
         return $self->{ 's_name' };
     }
 
     # setter methods
-    set_name{
+    sub set_name{
         my ( $self, $s_name ) = @_;
         $self->{ 's_name' } = $s_name if defined( $s_name );
         return $self->{ 's_name' };
     }
 
+    sub set_age{
+        my ( $self, $i_age ) = @_;
+        $self->{ "i_age" } = $i_age if defined( $i_age );
+        return $self->{ i_age  };
+    }
+
     # methods
-    character_overview{
-        my ( $self ) = @_;
+    sub character_overview{
+        my ( $self, $s_name, $i_age, $s_hair_color ) = @_;
+        
+        print( "\nName: " . $self->{'s_hair_color'} . "\n"   );
+        print( 'Age:  '   . $self->{'i_age'}        . "\n"   );
+        print( 'Hair: '   . $self->{'s_hair_color'} . "\n\n" );
     }
 
     1; # classes need to end with a 1
@@ -437,13 +447,14 @@ if(0){
     #use perl_snippets::perl_drill;
 
     # create objects
-    my $o_tomoki = new perl_snippets::perl_drill( 'Tomoki', 19, 'Black' );
-    my $o_ikarus = new perl_snippets::perl_drill( 'Ikarus', 00, 'Pink'  );
+    my $o_harry = new perl_snippets::perl_drill( 'harry', 42, 'Black' );
+    my $o_karen = new perl_snippets::perl_drill( 'karen', 00, 'Blonde'  );
 
     # use object methods
-    #$s_tomoki_name = $o_tomoki->get_name(); # extract object name parameter
-    #$o_ikarus->set_age( 20 );               # set a new age for the 'ikarus' object
-    #$o_ikarus->character_overview();
+    my $s_harry_name = $o_harry->get_name(); # extract object name parameter
+    $o_karen->set_age( 32 );               # set a new age for the 'karen' object
+    say($o_karen->character_overview());
+    say( $o_karen->get_name());
 
 
 }
