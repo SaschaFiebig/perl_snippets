@@ -13,7 +13,7 @@ my $i_pause_in_seconds = 60;
 
 
 sub date_timestamp{
-    my $i_current_unix_time = time();
+    my $i_current_unix_time = 7200+time();
     # extract year, month, day, hour, min, sec
     #my $s_year   = strftime '%Y', gmtime( $i_current_unix_time ); 
     #my $s_month  = strftime '%m', gmtime( $i_current_unix_time ); 
@@ -42,6 +42,9 @@ print( RED, "----------[ STARTING DOWNLOAD ]----------\n\n", RESET );
 while(0){
     # generate timestamp
     my $s_timestamp    = date_timestamp();
+    #my $i_current_unix_time = time();
+    #my $s_timestamp = strftime '%Y-%m-%d_%H:%M:%S', gmtime( $i_current_unix_time );
+
     # assemble filename 
     my $s_filename     = $s_prefix . $s_timestamp . $s_suffix;
     # assemble wget command 
@@ -59,4 +62,3 @@ while(0){
 } 
 
 print( RED, "----------[ DOWNLOAD COMPLETE ]----------\n", RESET );
-
