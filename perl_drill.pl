@@ -20,7 +20,8 @@ use feature 'say';
 ## 11 *encoding
 ## 12 *functions
 ## 13 *usefull functions
-## 14 classes & objects
+## 14 tests 
+## 15 classes & objects
 
 ## 00 package management
 if(0) {
@@ -42,8 +43,6 @@ if(0) {
     my $unassigned_variable;
     $unassigned_variable    = undef;
 
-    # output variables
-    say( 'My String = ' . $s_string_variable . ', My Integer = ' . $i_integer_variable . ', My Float = ' . $f_float_variable );
 }
 
 ## 02 arrays
@@ -359,6 +358,30 @@ if(0) {
 if(0) {
     say( "\n## ERROR HANDLING ###################################################" );
 
+    # eval{}
+    # <code> or die 'message';
+    # warn 'warn message';
+
+    # use Carp;
+    # carp 'error message';
+    
+    # use Carp qw(cluck);
+    # cluck 'error message';
+
+    # use carp; 
+    # croak 'error message';
+
+    # use Carp;
+    # confess 'error message';
+
+    # use Error ':try';
+    # try {
+    #   <code>;
+    #} catch <exception> with {
+    #   <code>;
+    #}:
+
+
 }
 
 ## 11 encoding (ASCII, ISO/IEC 10646, unicode UTF-8 (16, 32))
@@ -368,7 +391,45 @@ if(0) {
 }
 
 ## 12 functions
-if(0){}
+if(1){
+    use POSIX qw(strftime);
+
+    sub date_timestamp{
+        my ($self) = @_;
+        my $s_date_timestamp = strftime( "%Y-%m-%d_%H:%M:%S", localtime );
+        return $s_date_timestamp;
+    }
+    say( 'Current date-timestamp: ' . date_timestamp( ));
+
+
+
+    print('Please enter a number to determan if it is even or odd: ');
+    my $i_my_number = <STDIN>;
+    chomp( $i_my_number );
+    sub even_odd{
+        my ($i_number) = @_;
+        # add check for number
+        if( $i_number % 2 == 0 ){
+            say( $i_number . ' is even.' );
+        }elsif( $i_number % 2 != 0 ){
+            say( $i_number . ' is odd.' );
+        }else{
+            say( 'An error has occured.' );
+        }
+    }
+    even_odd( $i_my_number );
+
+
+    sub addition{
+        my ($i_summand_a, $i_summand_b) = @_;
+        # add check for number 
+        my $i_sum = $i_summand_a + $i_summand_b;
+        return $i_sum;
+    }
+    say( 'My sum is: ' . addition( 5, 5 ));
+
+
+}
 
 ## 13 useful functions
 if(0){
@@ -382,7 +443,7 @@ if(0){
 }
 
 ## 14 classes & objects
-if(1){
+if(0){
 
     # class files have the '.pm' extension
 
