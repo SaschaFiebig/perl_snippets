@@ -7,6 +7,9 @@ use diagnostics;
 use feature 'say';
 
 ## 00 *package manager ( pip, cpan )
+    # add packages 
+    # remove packages 
+    # update packages 
 ## 01 variables
 ## 02 arrays
 ## 03 hashes
@@ -14,13 +17,16 @@ use feature 'say';
 ## 05 loops
 ## 06 *string operations
 ## 07 *math
+    # basic math 
+    # https://perldoc.perl.org/Math::BigFloat
 ## 08 I/O
 ## 09 file I/O
 ## 10 *error handling
 ## 11 *encoding
-## 12 *functions
+## 12 functions
 ## 13 *usefull functions
 ## 14 tests 
+    # Test::More
 ## 15 classes & objects
 
 ## 00 package management
@@ -307,7 +313,7 @@ if(0) {
     say( "\n## INPUT OUTPUT #####################################################" );
     print( "Please enter your name: " );
     my $my_input = <STDIN>;
-    chomp( $my_input );
+    chomp( $my_input );  # we use 'chomp()' to remove 'new line' at the end of a string
     say( "Hello agent $my_input." );
 }
 
@@ -391,21 +397,21 @@ if(0) {
 }
 
 ## 12 functions
-if(1){
+if(0){
     use POSIX qw(strftime);
 
     sub date_timestamp{
         my ($self) = @_;
         my $s_date_timestamp = strftime( "%Y-%m-%d_%H:%M:%S", localtime );
+
         return $s_date_timestamp;
     }
     say( 'Current date-timestamp: ' . date_timestamp( ));
 
 
-
-    print('Please enter a number to determan if it is even or odd: ');
-    my $i_my_number = <STDIN>;
-    chomp( $i_my_number );
+    #print('Please enter a number to determan if it is even or odd: ');
+    #my $i_my_number = <STDIN>;
+    #chomp( $i_my_number );
     sub even_odd{
         my ($i_number) = @_;
         # add check for number
@@ -417,16 +423,47 @@ if(1){
             say( 'An error has occured.' );
         }
     }
-    even_odd( $i_my_number );
+    #even_odd( $i_my_number );
 
 
     sub addition{
         my ($i_summand_a, $i_summand_b) = @_;
         # add check for number 
         my $i_sum = $i_summand_a + $i_summand_b;
+
         return $i_sum;
     }
     say( 'My sum is: ' . addition( 5, 5 ));
+
+
+    sub muzzle_energy{
+        my ($f_mass_g, $f_velocity_msec) = @_;
+        my $f_mass_kg = $f_mass_g / 1_000;
+        my $f_joule = 0.5 * $f_mass_kg * ($f_velocity_msec ** 2);
+
+        return $f_joule;
+    }
+    say( 'Barret .50 cal = ' . muzzle_energy( 52, 882 ) . ' Joule' );
+
+
+    sub cm_to_inch{
+        my ($f_cm) = @_;
+        my $f_inch = $f_cm / 2.54;
+
+        return $f_inch;
+    }
+
+
+    sub inch_to_cm{
+        my ($f_inch) = @_;
+        my $f_cm = $f_inch * 2.54;
+
+        return $f_cm;
+    }
+    my $f_inch2 = 20.0;
+    my $f_cm2   = 50.8;
+    say( $f_cm2   . ' cm   = ' . cm_to_inch( $f_cm2   ) . ' inch' );
+    say( $f_inch2 . ' inch = ' . inch_to_cm( $f_inch2 ) . ' cm'   );
 
 
 }
@@ -436,13 +473,42 @@ if(0){
 
     # date time stamp 
     use POSIX qw(strftime);
-    my $s_time_stamp = strftime("%Y-%m-%d_%H:%M:%S", localtime);
+    my $s_time_stamp = strftime( "%Y-%m-%d_%H:%M:%S", localtime );
     say( 'Date-Timestamp: ' . $s_time_stamp );
 
 
 }
 
 ## 14 classes & objects
+if(1){
+    use lib '.';  # set application root folder
+    use Modules::perl_drill_class;  # import class
+
+    # create objects 
+    my $o_harry_dresden = Modules::perl_drill_class->new( 'Harry', 'Dresden', 'Wizard' , 'The Dresden Files' );
+    my $o_sarah_connor  = Modules::perl_drill_class->new( 'Sarah', 'Connor' , 'Fighter', 'Terminator' );
+
+    # get data 
+    print( '[' . $o_harry_dresden->getIP() . "]\n" );
+    print( "\tName: " . $o_harry_dresden->getFirstName() . ', ' . $o_harry_dresden->getLastName() . "\n" );
+    print( "\tJob:  " . $o_harry_dresden->getOccupation() . "\n\n" );
+
+    print( '[' . $o_sarah_connor->getIP() . "]\n" );
+    print( "\tName: " . $o_sarah_connor->getFirstName() . ', ' . $o_sarah_connor->getLastName() . "\n" );
+    print( "\tJob:  " . $o_sarah_connor->getOccupation() . "\n\n" );
+
+    # change data   
+    $o_harry_dresden->setOccupation( 'Wizard, Private Detective, Warden of the White Counsile, Warden of Deamonreach, Teacher, Winter Knight' );
+
+    # get changed data
+    print( $o_harry_dresden->getAllData() . "\n\n" );
+
+    # use methods 
+    my $f_number = 5.5;
+    my $f_result = $o_sarah_connor->mul( $f_number, $f_number );
+    print( "Multiplicating $f_number with $f_number results in: $f_result\n\n" );    
+
+}
 if(0){
 
     # class files have the '.pm' extension
