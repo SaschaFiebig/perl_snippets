@@ -1,4 +1,4 @@
-#!/bin/env perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
@@ -36,7 +36,9 @@ if(0) {
     # after installing cpan you can get packages by typing: cpan <package>::<class>
     # there are also other package managers for perl
     # install, update and delete packages
+
 }
+
 
 ## 01 variables
 if(0) {
@@ -50,6 +52,7 @@ if(0) {
     $unassigned_variable    = undef;
 
 }
+
 
 ## 02 arrays
 if(0) {
@@ -108,7 +111,9 @@ if(0) {
         $i_counter++;
         say("NR. $i_counter = $a_single_type_array[$i_counter-1]" );
     }
+
 }
+
 
 ## 03 hashes
 if(0) {
@@ -203,7 +208,9 @@ if(0) {
         }
         say( "}," );
     }
+
 }
+
 
 ## 04 conditionals + comparison operators
 if(0) {
@@ -233,6 +240,7 @@ if(0) {
     say( '' );
 
 }
+
 
 ## 05 loops
 if(0) {
@@ -273,7 +281,9 @@ if(0) {
     } until ( $i_counter_03 == 0 );
 
     say( '' );
+
 }
+
 
 ## 06 string operations (slicing, regex, ect...)
 if(0) {
@@ -303,10 +313,13 @@ if(0) {
     # regex extracting
     my ( $s_string_extracted ) = ( $s_string_d =~ /\A(.*?) /);
     say( 'Extracted String: ' . $s_string_extracted); 
+
 }
+
 
 ## 07 math
 if(0){}
+
 
 ## 08 I/O
 if(0) {
@@ -315,7 +328,9 @@ if(0) {
     my $my_input = <STDIN>;
     chomp( $my_input );  # we use 'chomp()' to remove 'new line' at the end of a string
     say( "Hello agent $my_input." );
+
 }
+
 
 ## 09 I/O files
 if(0) {
@@ -356,9 +371,10 @@ if(0) {
             # close file
             close( $o_file_handler ) or die( "Couldn't close file: $!" );
         }
-
     }
+
 }
+
 
 ## 10 error handling
 if(0) {
@@ -387,14 +403,16 @@ if(0) {
     #   <code>;
     #}:
 
-
 }
+
 
 ## 11 encoding (ASCII, ISO/IEC 10646, unicode UTF-8 (16, 32))
 if(0) {
     say( "\n## ENCODING #########################################################" );
     # encoding to json, yaml, xml, csv
+
 }
+
 
 ## 12 functions
 if(0){
@@ -465,8 +483,8 @@ if(0){
     say( $f_cm2   . ' cm   = ' . cm_to_inch( $f_cm2   ) . ' inch' );
     say( $f_inch2 . ' inch = ' . inch_to_cm( $f_inch2 ) . ' cm'   );
 
-
 }
+
 
 ## 13 useful functions
 if(0){
@@ -476,8 +494,8 @@ if(0){
     my $s_time_stamp = strftime( "%Y-%m-%d_%H:%M:%S", localtime );
     say( 'Date-Timestamp: ' . $s_time_stamp );
 
-
 }
+
 
 ## 14 classes & objects
 if(1){
@@ -507,82 +525,6 @@ if(1){
     my $f_number = 5.5;
     my $f_result = $o_sarah_connor->mul( $f_number, $f_number );
     print( "Multiplicating $f_number with $f_number results in: $f_result\n\n" );    
-
-}
-if(0){
-
-    # class files have the '.pm' extension
-
-    # add class package
-    package perl_snippets::perl_drill;
-
-    # add imports
-    use warnings;
-    use diagnostics;
-    use strict;
-
-    use feature 'say';
-
-    # add constructor
-    sub new {
-       my $o_class = shift;
-
-       # hash containing
-       my $self = {
-          's_name'       => shift,
-          'i_age'        => shift,
-          's_hair_color' => shift,
-       };
-
-       bless  $self, $o_class;
-       return $self;
-    }
-
-    # getter methods
-    sub get_name{
-        my ( $self ) = @_;
-        return $self->{ 's_name' };
-    }
-
-    # setter methods
-    sub set_name{
-        my ( $self, $s_name ) = @_;
-        $self->{ 's_name' } = $s_name if defined( $s_name );
-        return $self->{ 's_name' };
-    }
-
-    sub set_age{
-        my ( $self, $i_age ) = @_;
-        $self->{ "i_age" } = $i_age if defined( $i_age );
-        return $self->{ i_age  };
-    }
-
-    # methods
-    sub character_overview{
-        my ( $self, $s_name, $i_age, $s_hair_color ) = @_;
-        
-        print( "\nName: " . $self->{'s_hair_color'} . "\n"   );
-        print( 'Age:  '   . $self->{'i_age'}        . "\n"   );
-        print( 'Hair: '   . $self->{'s_hair_color'} . "\n\n" );
-    }
-
-    1; # classes need to end with a 1
-
-    # the following part should be in a different file than the class declaration
-
-    # import class
-    #use perl_snippets::perl_drill;
-
-    # create objects
-    my $o_harry = new perl_snippets::perl_drill( 'Harry', 42, 'Black'  );
-    my $o_karen = new perl_snippets::perl_drill( 'Karen', 00, 'Blonde' );
-
-    # use object methods
-    my $s_harry_name = $o_harry->get_name(); # extract object name parameter
-    $o_karen->set_age( 32 );               # set a new age for the 'karen' object
-    say( $o_karen->character_overview() );
-    say( $o_karen->get_name() );
-
 
 }
 
