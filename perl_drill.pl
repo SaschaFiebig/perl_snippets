@@ -403,6 +403,32 @@ if(0) {
     #   <code>;
     #}:
 
+    # 1. carp    - does not stop execution 
+         # My carp error from method at main.pl line 140.
+
+    # 2. warn    - does not stop execution 
+        # My warn error from method at lib/Tools/ErrorTesting.pm line 48.
+
+    # 3. cluck   - does not stop execution
+        # My cluck error from method at lib/Tools/ErrorTesting.pm line 43.
+        #         Tools::ErrorTesting::cluckError(Tools::ErrorTesting=HASH(0x55dd1ade74e8)) called at main.pl line 154
+
+    # 4. croak   - does stop execution 
+        # Uncaught exception from user code:
+        #         My croak error from method at main.pl line 154.
+        #         Tools::ErrorTesting::croakError(Tools::ErrorTesting=HASH(0x55c7066d74e8)) called at main.pl line 154
+
+    # 5. die     - does stop execution 
+        # Uncaught exception from user code:
+        #         My die error from method at lib/Tools/ErrorTesting.pm line 53.
+        #         Tools::ErrorTesting::dieError(Tools::ErrorTesting=HASH(0x55d87caed4e8)) called at main.pl line 157
+
+    # 6. confess - kills execution
+        # Uncaught exception from user code:
+        #         My confess error from method at lib/Tools/ErrorTesting.pm line 38.
+        #                 Tools::ErrorTesting::confessError(Tools::ErrorTesting=HASH(0x557df12464e8)) called at main.pl line 157
+        #         Tools::ErrorTesting::confessError(Tools::ErrorTesting=HASH(0x557df12464e8)) called at main.pl line 157
+
 }
 
 
