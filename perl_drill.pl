@@ -318,7 +318,79 @@ if(0) {
 
 
 ## 07 math
-if(0){}
+if(1){
+    say( "\n## MATH #############################################################" );
+
+    my $f_num00 = 3125.3125;
+    my $f_num01 =    5.00;
+    my $f_num02 =   10.10;
+    my $f_num03 =   17.17;
+    my $f_num04 =   20.20;
+    my $f_num05 =   25.25;
+    my $f_num06 =   30.30;
+    my $f_num07 =   35.35;
+    my $f_num08 =    3.141_547_499_200_292_847_757_589_302_346_453_465_363_542_666_234;
+
+    print( 'Addition:       ' . $f_num07 . ' + ' . $f_num01 . ' = ' . ( $f_num07+$f_num01) . "\n" );
+    print( 'Subtraction:    ' . $f_num06 . ' - ' . $f_num02 . ' = ' . ( $f_num06-$f_num02) . "\n" );
+    print( 'Multiplication: ' . $f_num05 . ' * ' . $f_num05 . ' = ' . ( $f_num05*$f_num05) . "\n" );
+    print( 'Division:       ' . $f_num04 . ' / ' . $f_num08 . ' = ' . ( $f_num04/$f_num08) . "\n" );
+    print( 'Moudlus:        ' . $f_num03 . ' % ' . $f_num01 . ' = ' . ( $f_num03%$f_num01) . "\n" );
+    print( 'Nth Power:      ' . $f_num01 . ' ** ' . $f_num01 . ' = ' . ( $f_num01**$f_num01) . "\n" );
+    #print( 'Nth Root:       ' . $f_num01 . ' // ' . $f_num03 . ' = ' . ( $f_num01-$f_num03) . "\n" );
+
+
+    print( "\n\n");
+
+
+    use Math::BigFloat;
+    my $o_big_float00 = Math::BigFloat->new( '3125.00' );
+    my $o_big_float01 = Math::BigFloat->new(    '5.00' );
+    my $o_big_float02 = Math::BigFloat->new(   '10.10' );
+    my $o_big_float03 = Math::BigFloat->new(   '17.17' );
+    my $o_big_float04 = Math::BigFloat->new(   '20.20' );
+    my $o_big_float05 = Math::BigFloat->new(   '25.25' );
+    my $o_big_float06 = Math::BigFloat->new(   '30.30' );
+    my $o_big_float07 = Math::BigFloat->new(   '35.35' );
+    my $o_big_float08 = Math::BigFloat->new(    '3.141_547_499_200_292_847_757_589_302_346_453_465_363_542_666_234');
+
+    print( 'Addition:       ' . $o_big_float07 . ' + ' . $f_num01 . ' = ' );
+    $o_big_float07->badd( $f_num01 );
+    print( $o_big_float07 . "\n" );
+
+    print( 'Subtraction:    ' . $o_big_float06 . ' - ' . $f_num02 . ' = ' );
+    $o_big_float06->bsub( $f_num02 );
+    print( $o_big_float06 . "\n" );
+
+    print( 'Multiplication: ' . $o_big_float05 . ' * ' . $f_num05 . ' = ' );
+    $o_big_float05->bmul( $f_num05 );
+    print( $o_big_float05 . "\n" );
+
+    print( 'Division:       ' . $o_big_float04 . ' / ' . $o_big_float08 . ' = ' );
+    $o_big_float04->bdiv( $o_big_float08 );
+    print( $o_big_float04 . "\n" );
+
+    print( 'Modulus:        ' . $o_big_float03 . ' % ' . $f_num01 . ' = ' );
+    $o_big_float03->bmod( $f_num01 );
+    print( $o_big_float03 . "\n" );
+
+    print( 'Nth power:      ' . $o_big_float01 . ' ** ' . $f_num01 . ' = ' );
+    $o_big_float01->bpow( $f_num01 );
+    print( $o_big_float01 . "\n" );
+
+    print( 'Nth root:       ' . $o_big_float00 . ' // ' . $f_num01 . ' = ' );
+    $o_big_float00->broot( $f_num01 );
+    print( $o_big_float00 . "\n" );
+
+
+
+    # life expectency 10_000
+    my $o_life = Math::BigFloat->new( '10_000' );
+    $o_life->bdiv(30);
+    print("\n\n" . $o_life . "\n\n");
+
+
+}
 
 
 ## 08 I/O
@@ -524,7 +596,7 @@ if(0){
 
 
 ## 14 classes & objects
-if(1){
+if(0){
     use lib '.';  # set application root folder
     use Modules::perl_drill_class;  # import class
 
