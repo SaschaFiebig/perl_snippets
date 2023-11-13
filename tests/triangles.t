@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use diagnostics; 
 
+use lib '.';
 use lib '..';
 
 use Modules::Triangles;
@@ -21,7 +22,6 @@ use Test::More tests => 6;
 
 
 use_ok('Modules::Triangles');  # test 01
-sleep(1);
 
 # set triangle parameters
 my %h_sides = (
@@ -42,13 +42,10 @@ my $nothing    = undef;
 
 # check that object has been defined 
 ok(defined $o_triangle, 'New triangle object has been defined');  # test 02 
-sleep(1);
 ok(!$nothing          , 'No object has been defined'          );  # test 03
-sleep(1);
 
 # check if the object is of the Modules::Triangles type 
 ok($o_triangle->isa('Modules::Triangles'), 'Object is of type Modules::Triangles');  # test 04 
-sleep(1);
 
 # test subroutines 
 subtest 'Test Triangle Subroutines' => sub {
@@ -61,7 +58,6 @@ subtest 'Test Triangle Subroutines' => sub {
     is(sprintf( "%.2f", $o_triangle->calc_side_c_90($h_sides{'side_a'}, $h_sides{'side_b'})), 
         $h_sides{'side_c'}, 'calc_side_c_90()');
 };  # test 05
-sleep(1);
 
 subtest 'Negative Test Triangle Subroutines' => sub {
     plan tests => 3;
