@@ -7,21 +7,6 @@ use diagnostics;
 use Term::ANSIColor qw(:constants);
 
 
-sub start_test {
-    my ( $s_test_path, $i_spaces ) = @_;
-
-    my $s_header = ( split '/', $s_test_path )[-1];
-    chomp($s_header);
-    print( RED, "### $s_header ##################################\n", RESET );
-    system( "perl $s_test_path" );
-
-    while ( $i_spaces > 0 ) {
-        print( "\n" );
-        $i_spaces--;
-    }
-}
-
-
 # get test files from sub directories 
 system( 'tree -fi | grep -P \\.t$ > test_files.txt' );
 
@@ -39,11 +24,12 @@ unlink 'test_files.txt';
 # pop off any non '.t' entry from @a_test_files so we can change test_files.txt to .txt
 my @a_test_files = grep{/\.t$/} @a_files;
 
-
-
 # execute test files 
 foreach my $s_test (@a_test_files) {
-    start_test($s_test, 3);
+    my $s_header = ( split '/', $s_test)[-1];
+    chomp($s_header);
+    print( RED, "### $s_header ##################################\n", RESET );
+    system("perl $s_test");
     sleep(2);
 }
 
