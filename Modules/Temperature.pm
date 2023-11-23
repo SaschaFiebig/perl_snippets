@@ -1,6 +1,6 @@
 #!usr/bin/env perl
 
-package Modules::Triangles;
+package Modules::Temperature;
 
 use strict;
 use warnings;
