@@ -7,7 +7,11 @@ use POSIX qw(strftime);
 use Term::ANSIColor qw(:constants);
 
 
+#my $s_download_url     = 'http://rathaus-hildesheim.de/webcam/webcam.jpg';
+#my $s_download_url     = 'http://rathaus-hildesheim.de/webcam/webcam.jpg';
+#my $s_download_url     = 'http://rathaus-hildesheim.de/webcam/webcam.jpg';
 my $s_download_url     = 'http://rathaus-hildesheim.de/webcam/webcam.jpg';
+
 my $s_prefix           = 'hildesheim_marktplatz_';
 my $s_suffix           = '.jpg';
 my $i_pause_in_seconds = 60;
