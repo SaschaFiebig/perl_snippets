@@ -197,8 +197,10 @@ while(1){
     else {
         die('Error: Invalide input ');
     }
-
+    print("\n\n\t-- Enter 'q' to quit --\n");
     my $hold = <STDIN>;
+    chomp($hold);
+    last if $hold eq 'q';
 }
 
 
