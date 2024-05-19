@@ -88,7 +88,7 @@ sub meter_to_inch {
 }
 sub inch_to_meter {
     my ($self, $f_inch) = @_;
-    my $_meter = $f_inch / 39.37008;
+    my $f_meter = $f_inch / 39.37008;
     return $f_meter;
 }
 
@@ -105,12 +105,12 @@ sub feet_to_meter {
 
 sub meter_to_yard {
     my ($self, $f_meter) = @_;
-    my $f_yard = $f_meter / 1.093613;
+    my $f_yard = $f_meter / 0.9144;
     return $f_yard;
 }
 sub yard_to_meter {
     my ($self, $f_yard) = @_;
-    my $f_meter = $f_yard * 1.093613;
+    my $f_meter = $f_yard * 0.9144;
     return $f_meter;
 }
 
