@@ -11,7 +11,7 @@ use Modules::Length;
 use Term::ANSIColor qw(:constants);
 
 
-sub from_meters {
+sub from_meter {
     my ($o_length, $f_length) = @_;
 
     my $f_mm   = $o_length->meter_to_mm($f_length); 
@@ -23,7 +23,7 @@ sub from_meters {
     my $f_inch = $o_length->meter_to_inch($f_length); 
     my $f_feet = $o_length->meter_to_feet($f_length); 
     my $f_yard = $o_length->meter_to_yard($f_length); 
-    my $f_mile = $o_length->meter_to_miles($f_length); 
+    my $f_mile = $o_length->meter_to_mile($f_length); 
 
     print("\t$f_mm mm\n");
     print("\t$f_cm cm\n");
@@ -54,12 +54,12 @@ sub from_km {
     my $f_inch = $o_length->meter_to_inch($f_m); 
     my $f_feet = $o_length->meter_to_feet($f_m); 
     my $f_yard = $o_length->meter_to_yard($f_m); 
-    my $f_mile = $o_length->meter_to_miles($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
 
     print("\t$f_mm mm\n");
     print("\t$f_cm cm\n");
     print("\t$f_m m\n");
-print(RED, "\t$f_length km\n", RESET);
+    print(RED, "\t$f_length km\n", RESET);
     print("\t$f_au au\n");
     print("\t$f_ly ly\n");
     print("\t$f_ps ps\n");
@@ -85,7 +85,7 @@ sub from_au {
     my $f_inch = $o_length->meter_to_inch($f_m); 
     my $f_feet = $o_length->meter_to_feet($f_m); 
     my $f_yard = $o_length->meter_to_yard($f_m); 
-    my $f_mile = $o_length->meter_to_miles($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
 
     print("\t$f_mm mm\n");
     print("\t$f_cm cm\n");
@@ -116,7 +116,7 @@ sub from_ly {
     my $f_inch = $o_length->meter_to_inch($f_m); 
     my $f_feet = $o_length->meter_to_feet($f_m); 
     my $f_yard = $o_length->meter_to_yard($f_m); 
-    my $f_mile = $o_length->meter_to_miles($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
 
     print("\t$f_mm mm\n");
     print("\t$f_cm cm\n");
@@ -147,7 +147,7 @@ sub from_ps {
     my $f_inch = $o_length->meter_to_inch($f_m); 
     my $f_feet = $o_length->meter_to_feet($f_m); 
     my $f_yard = $o_length->meter_to_yard($f_m); 
-    my $f_mile = $o_length->meter_to_miles($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
 
     print("\t$f_mm mm\n");
     print("\t$f_cm cm\n");
@@ -164,12 +164,136 @@ sub from_ps {
     return 1;
 }
 
+sub from_inch {
+    my ($o_length, $f_length) = @_;
+
+    my $f_m = $o_length->inch_to_meter($f_length);
+
+    my $f_mm   = $o_length->meter_to_mm($f_m); 
+    my $f_cm   = $o_length->meter_to_cm($f_m); 
+    my $f_km   = $o_length->meter_to_km($f_m); 
+    my $f_au   = $o_length->meter_to_au($f_m); 
+    my $f_ly   = $o_length->meter_to_ly($f_m); 
+    my $f_ps   = $o_length->meter_to_parsec($f_m); 
+    my $f_inch = $o_length->meter_to_inch($f_m); 
+    my $f_feet = $o_length->meter_to_feet($f_m); 
+    my $f_yard = $o_length->meter_to_yard($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
+
+    print("\t$f_mm mm\n");
+    print("\t$f_cm cm\n");
+    print("\t$f_m m\n");
+    print("\t$f_km km\n");
+    print("\t$f_au au\n");
+    print("\t$f_ly ly\n");
+    print("\t$f_ps ps\n");
+    print(RED, "\t$f_inch inch\n", RESET);
+    print("\t$f_feet feet\n");
+    print("\t$f_yard yard\n");
+    print("\t$f_mile mile\n");
+
+    return 1;
+}
+
+sub from_feet {
+    my ($o_length, $f_length) = @_;
+
+    my $f_m = $o_length->feet_to_meter($f_length);
+
+    my $f_mm   = $o_length->meter_to_mm($f_m); 
+    my $f_cm   = $o_length->meter_to_cm($f_m); 
+    my $f_km   = $o_length->meter_to_km($f_m); 
+    my $f_au   = $o_length->meter_to_au($f_m); 
+    my $f_ly   = $o_length->meter_to_ly($f_m); 
+    my $f_ps   = $o_length->meter_to_parsec($f_m); 
+    my $f_inch = $o_length->meter_to_inch($f_m); 
+    my $f_feet = $o_length->meter_to_feet($f_m); 
+    my $f_yard = $o_length->meter_to_yard($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
+
+    print("\t$f_mm mm\n");
+    print("\t$f_cm cm\n");
+    print("\t$f_m m\n");
+    print("\t$f_km km\n");
+    print("\t$f_au au\n");
+    print("\t$f_ly ly\n");
+    print("\t$f_ps ps\n");
+    print("\t$f_inch inch\n");
+    print(RED, "\t$f_feet feet\n", RESET);
+    print("\t$f_yard yard\n");
+    print("\t$f_mile mile\n");
+
+    return 1;
+}
+
+sub from_yard {
+    my ($o_length, $f_length) = @_;
+
+    my $f_m = $o_length->yard_to_meter($f_length);
+
+    my $f_mm   = $o_length->meter_to_mm($f_m); 
+    my $f_cm   = $o_length->meter_to_cm($f_m); 
+    my $f_km   = $o_length->meter_to_km($f_m); 
+    my $f_au   = $o_length->meter_to_au($f_m); 
+    my $f_ly   = $o_length->meter_to_ly($f_m); 
+    my $f_ps   = $o_length->meter_to_parsec($f_m); 
+    my $f_inch = $o_length->meter_to_inch($f_m); 
+    my $f_feet = $o_length->meter_to_feet($f_m); 
+    my $f_yard = $o_length->meter_to_yard($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
+
+    print("\t$f_mm mm\n");
+    print("\t$f_cm cm\n");
+    print("\t$f_m m\n");
+    print("\t$f_km km\n");
+    print("\t$f_au au\n");
+    print("\t$f_ly ly\n");
+    print("\t$f_ps ps\n");
+    print("\t$f_inch inch\n");
+    print("\t$f_feet feet\n");
+    print(RED, "\t$f_yard yard\n", RESET);
+    print("\t$f_mile mile\n");
+
+    return 1;
+}
+
+sub from_mile {
+    my ($o_length, $f_length) = @_;
+
+    my $f_m = $o_length->mile_to_meter($f_length);
+
+    my $f_mm   = $o_length->meter_to_mm($f_m); 
+    my $f_cm   = $o_length->meter_to_cm($f_m); 
+    my $f_km   = $o_length->meter_to_km($f_m); 
+    my $f_au   = $o_length->meter_to_au($f_m); 
+    my $f_ly   = $o_length->meter_to_ly($f_m); 
+    my $f_ps   = $o_length->meter_to_parsec($f_m); 
+    my $f_inch = $o_length->meter_to_inch($f_m); 
+    my $f_feet = $o_length->meter_to_feet($f_m); 
+    my $f_yard = $o_length->meter_to_yard($f_m); 
+    my $f_mile = $o_length->meter_to_mile($f_m); 
+
+    print("\t$f_mm mm\n");
+    print("\t$f_cm cm\n");
+    print("\t$f_m m\n");
+    print("\t$f_km km\n");
+    print("\t$f_au au\n");
+    print("\t$f_ly ly\n");
+    print("\t$f_ps ps\n");
+    print("\t$f_inch inch\n");
+    print("\t$f_feet feet\n");
+    print("\t$f_yard yard\n");
+    print(RED, "\t$f_mile mile\n", RESET);
+
+    return 1;
+}
+
 
 my $o_length = Modules::Length->new();
 
 while(1){
     system('clear');
-    print("\n\n\n[m]:meter, [km]:kilometer, [au]:astronomical unit, [ly]: light year, [ps]: parsec");
+    print("\n\n\n[m]:meter, [km]:kilometer, \n[au]:astronomical unit, [ly]:light year, [ps]:parsec, \n[in]:inch, [ft]:feet, [yd]:yard, [ml]:mile" );
     print("\nPlease enter a unit to convert from: ");
     my $s_unit = <STDIN>;
     chomp($s_unit);
@@ -180,7 +304,7 @@ while(1){
     last unless($f_length =~ /\d/);
 
     if ($s_unit eq 'm') {
-        from_meters($o_length, $f_length);
+        from_meter($o_length, $f_length);
     }
     elsif ($s_unit eq 'km') {
         from_km($o_length, $f_length);
@@ -192,10 +316,22 @@ while(1){
         from_ly($o_length, $f_length);
     }
     elsif ($s_unit eq 'ps') {
-        from_ps($o_length, $f_length);
+        from_parsec($o_length, $f_length);
+    }
+    elsif ($s_unit eq 'in') {
+        from_inch($o_length, $f_length);
+    }
+    elsif ($s_unit eq 'ft') {
+        from_feet($o_length, $f_length);
+    }
+    elsif ($s_unit eq 'yd') {
+        from_yard($o_length, $f_length);
+    }
+    elsif ($s_unit eq 'ml') {
+        from_mile($o_length, $f_length);
     }
     else {
-        die('Error: Invalide input ');
+        die('Error: Invalide input');
     }
     print("\n\n\t-- Enter 'q' to quit --\n");
     my $hold = <STDIN>;
