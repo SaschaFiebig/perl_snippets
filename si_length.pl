@@ -133,10 +133,10 @@ sub from_ly {
     return 1;
 }
 
-sub from_ps {
+sub from_parsec {
     my ($o_length, $f_length) = @_;
 
-    my $f_m = $o_length->ps_to_meter($f_length);
+    my $f_m = $o_length->parsec_to_meter($f_length);
 
     my $f_mm   = $o_length->meter_to_mm($f_m); 
     my $f_cm   = $o_length->meter_to_cm($f_m); 
@@ -293,17 +293,22 @@ my $o_length = Modules::Length->new();
 
 while(1){
     system('clear');
-    print("\n\n\n[m]:meter, [km]:kilometer, \n[au]:astronomical unit, [ly]:light year, [ps]:parsec, \n[in]:inch, [ft]:feet, [yd]:yard, [ml]:mile" );
+
+    print("\n\n[m] :meter \n[km]:kilometer \n[au]:astronomical unit \n[ly]:light year \n[ps]:parsec \n[in]:inch \n[ft]:feet \n[yd]:yard \n[ml]:mile" );
     print("\nPlease enter a unit to convert from: ");
     my $s_unit = <STDIN>;
     chomp($s_unit);
+    $s_unit = lc($s_unit);
+
     print("Please enter a length in your selected unit: ");
     my $f_length = <STDIN>;
     chomp($f_length);
 
-    last unless($f_length =~ /\d/);
 
-    if ($s_unit eq 'm') {
+    if (!($f_length =~ /\d/)) {
+        die(RED, "Error: \"$f_length\" is not a valide lenght!", RESET);
+    }
+    elsif ($s_unit eq 'm') {
         from_meter($o_length, $f_length);
     }
     elsif ($s_unit eq 'km') {
@@ -331,12 +336,13 @@ while(1){
         from_mile($o_length, $f_length);
     }
     else {
-        die('Error: Invalide input');
+        die(RED, "Error: \"$s_unit\" is not a valide unit of length!", RESET);
     }
+
     print("\n\n\t-- Enter 'q' to quit --\n");
-    my $hold = <STDIN>;
-    chomp($hold);
-    last if $hold eq 'q';
+    my $s_hold = <STDIN>;
+    chomp($s_hold);
+    last if $s_hold eq 'q';
 }
 
 
