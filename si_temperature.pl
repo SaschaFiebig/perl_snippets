@@ -10,6 +10,31 @@ use lib '../lib';
 use Modules::Temperature;
 use Term::ANSIColor qw(:constants);
 
+# TODO: add subroutine for unit conversion to be more 'DRY'
+# TODO: add subroutine to print out conversions 
+# TODO: implement subroutines for unit conversion and print out 
+sub convert {
+    my ($o_temperature, $f_temperature, $s_unit) = @_;
+
+    my $f_kelvin;
+    if ($s_unit eq 'c') {
+        $f_kelvin = $o_temperature->celsius_to_kelvin($f_temperature);
+    }
+    elsif ($s_unit eq 'f') {
+        $f_kelvin = $o_temperature->fahrenheit_to_kelvin($f_temperature);
+    }
+    elsif ($s_unit eq 'k') {
+        $f_kelvin = $f_temperature;
+    }
+
+    my %h_conversions = (
+        'f_kelvin'     => $f_kelvin;
+        'f_celsius'    => $o_temperature->kelvin_to_celsius($f_temperature);
+        'f_fahrenheit' => $o_temperature->kelvin_to_fahrenheit($f_temperature);
+    )
+
+    return %h_conversions;
+}
 
 sub from_celsius {
     my ($o_temperature, $f_temperature) = @_;
