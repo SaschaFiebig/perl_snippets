@@ -10,12 +10,12 @@ use lib '../lib';
 use Modules::Temperature;
 use Term::ANSIColor qw(:constants);
 
-# TODO: add subroutine for unit conversion to be more 'DRY'
-# TODO: add subroutine to print out conversions 
-# TODO: implement subroutines for unit conversion and print out 
+
 sub convert {
     my ($o_temperature, $f_temperature, $s_unit) = @_;
+    # subroutine to convert to relevant units 
 
+    # convert unit to kelvin
     my $f_kelvin;
     if ($s_unit eq 'c') {
         $f_kelvin = $o_temperature->celsius_to_kelvin($f_temperature);
@@ -28,52 +28,38 @@ sub convert {
     }
 
     my %h_conversions = (
-        'f_kelvin'     => $f_kelvin;
-        'f_celsius'    => $o_temperature->kelvin_to_celsius($f_temperature);
-        'f_fahrenheit' => $o_temperature->kelvin_to_fahrenheit($f_temperature);
-    )
+        'f_kelvin'     => $f_kelvin,
+        'f_celsius'    => $o_temperature->kelvin_to_celsius($f_temperature),
+        'f_fahrenheit' => $o_temperature->kelvin_to_fahrenheit($f_temperature),
+    );
 
     return %h_conversions;
 }
 
-sub from_celsius {
-    my ($o_temperature, $f_temperature) = @_;
+sub present {
+    my ($f_temperature, $s_unit, %h_conversions) = @_;
+    # subroutine to print out values to screen 
 
-    my $f_kelvin     = $o_temperature->celsius_to_kelvin($f_temperature);
-    my $f_celsius    = $o_temperature->kelvin_to_celsius($f_kelvin);
-    my $f_fahrenheit = $o_temperature->kelvin_to_fahrenheit($f_kelvin);
+    # extract values
+    my $f_celsius    = $h_conversions{'f_celsius'   };
+    my $f_fahrenheit = $h_conversions{'f_fahrenheit'};
+    my $f_kelvin     = $h_conversions{'f_kelvin'    };
 
-    print(RED, "\t$f_celsius °C\n", RESET);
-    print("\t$f_fahrenheit °F\n");
-    print("\t$f_kelvin K\n");
+    # print out source value
+    if ($s_unit eq 'c') {
+        print(RED, "\n\t$f_temperature °C\n", RESET);
+    }
+    elsif ($s_unit eq 'f') {
+        print(RED, "\n\t$f_temperature °F\n", RESET);
+    }
+    elsif ($s_unit eq 'k') {
+        print(RED, "\n\t$f_temperature  K\n", RESET);
+    }
 
-    return 1;
-}
-
-sub from_fahrenheit {
-    my ($o_temperature, $f_temperature) = @_;
-
-    my $f_kelvin     = $o_temperature->fahrenheit_to_kelvin($f_temperature);
-    my $f_celsius    = $o_temperature->kelvin_to_celsius($f_kelvin);
-    my $f_fahrenheit = $o_temperature->kelvin_to_fahrenheit($f_kelvin);
-
-    print("\t$f_celsius °C\n");
-    print(RED, "\t$f_fahrenheit °F\n", RESET);
-    print("\t$f_kelvin K\n");
-
-    return 1;
-}
-
-sub from_kelvin {
-    my ($o_temperature, $f_temperature) = @_;
-
-    my $f_kelvin     = $f_temperature;
-    my $f_celsius    = $o_temperature->kelvin_to_celsius($f_kelvin);
-    my $f_fahrenheit = $o_temperature->kelvin_to_fahrenheit($f_kelvin);
-
-    print("\t$f_celsius °C\n");
-    print("\t$f_fahrenheit °F\n");
-    print(RED, "\t$f_kelvin K\n", RESET);
+    # take array and print out values 
+    print("\t$f_celsius °C\n"   ) unless ($s_unit eq 'c');
+    print("\t$f_fahrenheit °F\n") unless ($s_unit eq 'f');
+    print("\t$f_kelvin K\n"     ) unless ($s_unit eq 'k');
 
     return 1;
 }
@@ -89,26 +75,17 @@ while (1) {
     my $s_unit = <STDIN>;
     chomp($s_unit);
     $s_unit = lc($s_unit);
+    die(RED, "Error: \"$s_unit\" is not a valide temperature unit!", RESET) 
+        unless($s_unit eq 'c' || $s_unit eq 'f' || $s_unit eq 'k'); 
 
     print("Please enter the temperature: ");
     my $f_temperature = <STDIN>;
     chomp($f_temperature);
+    die(RED, "Error: \"$f_temperature\" is not a valide temperature!", RESET) 
+        unless($f_temperature =~ /\d/); 
 
-    if (!($f_temperature =~ /\d/)) {
-        die(RED, "Error: \"$f_temperature\" is not a valide temperature!", RESET);
-    }
-    elsif ($s_unit eq 'c') {
-        from_celsius($o_temperature, $f_temperature);
-    }
-    elsif ($s_unit eq 'f') {
-        from_fahrenheit($o_temperature, $f_temperature);
-    }
-    elsif ($s_unit eq 'k') {
-        from_kelvin($o_temperature, $f_temperature);
-    }
-    else {
-        die(RED, "Error: \"$s_unit\" is not a valide temperature unit!", RESET);
-    }
+    my %h_conversions = convert($o_temperature, $f_temperature, $s_unit);
+    present($f_temperature, $s_unit, %h_conversions);
 
     print("\n\n\t-- Enter 'q' to quit --\n");
     my $s_hold = <STDIN>;
