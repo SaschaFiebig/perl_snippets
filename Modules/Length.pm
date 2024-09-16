@@ -30,11 +30,21 @@ sub meter_to_mm {
     my $f_mm = $f_meter * 100 * 10;
     return $f_mm;
 }
+sub mm_to_meter {
+    my ($self, $f_mm) = @_;
+    my $f_meter = $f_mm / 100 / 10;
+    return $f_meter;
+}
 
 sub meter_to_cm {
     my ($self, $f_meter) = @_;
     my $f_cm = $f_meter * 100;
     return $f_cm;
+}
+sub cm_to_meter {
+    my ($self, $f_cm) = @_;
+    my $f_meter = $f_cm / 100;
+    return $f_meter;
 }
 
 sub meter_to_km {
