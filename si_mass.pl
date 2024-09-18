@@ -40,11 +40,11 @@ sub convert {
     my %h_conversions = (
         'f_kilogram'  => $f_kilogram,
         'f_milligram' => $o_mass->kilogram_to_milligram($f_kilogram),
-        'f_gram'      => $o_mass->kilogram_to_gram(     $f_kilogram),
-        'f_kiloton'   => $o_mass->kilogram_to_kiloton(  $f_kilogram),
-        'f_pound'     => $o_mass->kilogram_to_pound(    $f_kilogram),
-        'f_ounce'     => $o_mass->kilogram_to_ounce(     $f_kilogram),
-        'f_grain'     => $o_mass->kilogram_to_grain(    $f_kilogram),
+        'f_gram'      => $o_mass->kilogram_to_gram($f_kilogram     ),
+        'f_kiloton'   => $o_mass->kilogram_to_kiloton($f_kilogram  ),
+        'f_pound'     => $o_mass->kilogram_to_pound($f_kilogram    ),
+        'f_ounce'     => $o_mass->kilogram_to_ounce($f_kilogram    ),
+        'f_grain'     => $o_mass->kilogram_to_grain($f_kilogram    ),
     );
 
     return %h_conversions;
