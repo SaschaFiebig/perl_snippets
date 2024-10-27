@@ -10,7 +10,6 @@ use lib '../lib';
 use Modules::Mass;
 use Term::ANSIColor qw(:constants);
 
-# add functions 
 sub convert {
     my ($o_mass, $f_mass, $s_unit) = @_;
 
